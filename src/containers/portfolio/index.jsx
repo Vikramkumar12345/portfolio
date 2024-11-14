@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHeaderContent from "../../components/pageHeaderContant";
 import { BsInfoCircleFill } from "react-icons/bs";
 import ImageOne from "../../images/image1.jpg";
@@ -7,59 +7,48 @@ import ImageThree from "../../images/image3.jpg";
 import ImageFour from "../../images/image4.jpg";
 import ImageFive from "../../images/image5.jpg";
 import "./styles.scss";
-import { useState } from "react";
 
 const portfolioData = [
   {
     id: 2,
     name: "Ecommerce",
     image: ImageOne,
-    link: "",
+    link: "https://github.com/Vikramkumar12345/MERN-stack-Ecommerce-website",
   },
   {
     id: 3,
-    name: "Notes App",
-    link: "",
+    name: "Spotify Clone",
+    link: "https://github.com/Vikramkumar12345/Spotify-Clone",
     image: ImageTwo,
   },
   {
     id: 2,
-    name: "Supplier Design",
+    name: "Hospital Management System",
     image: ImageThree,
-    link: "",
+    link: "https://github.com/Vikramkumar12345/MERN-Stack-Hospital-Management-System",
   },
   {
     id: 2,
-    name: "Todo App",
+    name: "Food Delivery",
     image: ImageFour,
-
-    link: "",
+    link: "https://github.com/Vikramkumar12345/Food-Delivery",
   },
   {
     id: 3,
-    name: "Shopping cart design",
+    name: "Todo App",
     image: ImageFive,
-    link: "",
+    link: "https://github.com/Vikramkumar12345/Todo-App",
   },
 ];
 
 const filterData = [
-  {
-    filterId: 1,
-    label: "All",
-  },
-  {
-    filterId: 2,
-    label: "Developement",
-  },
-  {
-    filterId: 3,
-    label: "Design",
-  },
+  { filterId: 1, label: "All" },
+  { filterId: 2, label: "Development" },
+  { filterId: 3, label: "Design" },
 ];
 
 const Portfolio = () => {
-  const [filteredvalue, setFilteredValue] = useState(1);
+  const [filteredValue, setFilteredValue] = useState(1);
   const [hoveredValue, setHoveredValue] = useState(null);
 
   function handleFilter(currentId) {
@@ -70,16 +59,10 @@ const Portfolio = () => {
     setHoveredValue(index);
   }
 
-  console.log("====================================");
-  console.log(hoveredValue);
-  console.log("====================================");
-
   const filteredItems =
-    filteredvalue === 1
+    filteredValue === 1
       ? portfolioData
-      : portfolioData.filter((item) => item.id === filteredvalue);
-
-  console.log(filteredItems);
+      : portfolioData.filter((item) => item.id === filteredValue);
 
   return (
     <section id="portfolio" className="portfolio">
@@ -91,7 +74,7 @@ const Portfolio = () => {
         <ul className="portfolio__content__filter">
           {filterData.map((item) => (
             <li
-              className={item.filterId === filteredvalue ? "active" : ""}
+              className={item.filterId === filteredValue ? "active" : ""}
               onClick={() => handleFilter(item.filterId)}
               key={item.filterId}
             >
@@ -108,15 +91,21 @@ const Portfolio = () => {
               onMouseLeave={() => handleHover(null)}
             >
               <div className="portfolio__content__cards__item__img-wrapper">
-                <a>
-                  <img alt="dummy data" src={item.image} />
+                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  <img alt={item.name} src={item.image} />
                 </a>
               </div>
               <div className="overlay">
                 {index === hoveredValue && (
                   <div>
                     <p>{item.name}</p>
-                    <button>Visit</button>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <button>GitHub</button>
+                    </a>
                   </div>
                 )}
               </div>
@@ -127,4 +116,5 @@ const Portfolio = () => {
     </section>
   );
 };
+
 export default Portfolio;

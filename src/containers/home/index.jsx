@@ -5,7 +5,6 @@ import { FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
 
 import './styles.scss';
 
-import profileImage from '../../images/vikram.jpg';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ const Home = () => {
   return (
     <section id="home" className="home">
       <div className="home__text-wrapper">
-        <img src={profileImage} alt="Vikram" className="home__profile-image" />
         <h1>
           Hello, I'm Vikram
           <br />
@@ -39,8 +37,7 @@ const Home = () => {
           <button onClick={handleNavigateToContactMePage}>Hire Me</button>
         </div>
       </Animate>
-      
-      {/* Social Media Links */}
+
       <div className="home__social-media">
         <a href="https://www.linkedin.com/in/vikram-kumar-97094a27b/" target="_blank" rel="noopener noreferrer">
           <FaLinkedin size={30} />
