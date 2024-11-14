@@ -1,0 +1,27 @@
+.App{
+  height: 100%;
+
+  &__main-page-content{
+    height: calc(100% - 80px);
+  }
+}
+
+.social-media {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+
+  a {
+    color: var(--yellow-theme-main-color);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--yellow-theme-sub-text-color);
+    }
+  }
+}
+
+
